@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "TodoApi_H2.name" -}}
+{{- define "todo-api-mysql.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "TodoApi_H2.fullname" -}}
+{{- define "todo-api-mysql.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "TodoApi_H2.chart" -}}
+{{- define "todo-api-mysql.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "TodoApi_H2.labels" -}}
-helm.sh/chart: {{ include "TodoApi_H2.chart" . }}
-{{ include "TodoApi_H2.selectorLabels" . }}
+{{- define "todo-api-mysql.labels" -}}
+helm.sh/chart: {{ include "todo-api-mysql.chart" . }}
+{{ include "todo-api-mysql.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "TodoApi_H2.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "TodoApi_H2.name" . }}
+{{- define "todo-api-mysql.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "todo-api-mysql.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "TodoApi_H2.serviceAccountName" -}}
+{{- define "todo-api-mysql.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "TodoApi_H2.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "todo-api-mysql.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
