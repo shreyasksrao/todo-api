@@ -1,13 +1,13 @@
 replicaCount: 1
 
 image:
-  repository: vijaynvb/todoapih2:1.0
+  repository: shreyasksrao/todoapi:latest
 
 service:
   type: NodePort
-  port: 80
+  port: 8081
   name: svctodoh2api
-  targetPort: 80
+  targetPort: 8081
 
 container:
   name: todoapimysql

@@ -4,7 +4,7 @@ image:
   repository: mysql
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 3306
   targetPort: 3306
 
